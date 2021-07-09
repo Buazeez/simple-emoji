@@ -1,5 +1,6 @@
 const emojis = require("./emojis.json");
 const fs = require("fs");
+const { join } = require("path");
 
 function random() {
   const keys = Object.keys(emojis);
@@ -31,7 +32,7 @@ function imageize(emojiKey = "") {
   return new Promise((resolve) => {
     if (!emojiKey) throw new Error("emoji key is required");
 
-    fs.readFile(`./assets/${emojiKey}.png`, (err, data) => {
+    fs.readFile(join(__dirname, `./assets/${emojiKey}.png`), (err, data) => {
       if (err) throw new Error(err);
       resolve(data);
     });
