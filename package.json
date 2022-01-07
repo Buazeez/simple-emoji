@@ -1,13 +1,13 @@
 {
   "name": "simple-emoji",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "simple node emoji package with 3 simple functions",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev" : "nodemon index.js"
   },
-  "keywords": ["node-emoji" , "simple-emoji" , "emoji" , "emojis" , "emoji-image" , "image"],
+  "keywords": ["node-emoji" , "simple-emoji" , "emoji" , "emojis" , "emoji-image" , "image" , "buffer" , "convert"],
   "author": "Buazeez",
   "license": "MIT",
   "repository": {

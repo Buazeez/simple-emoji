@@ -28,11 +28,11 @@ function get(emoji = "") {
   };
 }
 
-function imageize(emojiKey = "") {
+function imagize(emojiKey = "") {
   return new Promise((resolve) => {
     if (!emojiKey) throw new Error("emoji key is required");
 
-    fs.readFile(join(__dirname, `./assets/${emojiKey}.png`), (err, data) => {
+    fs.readFile(join(__dirname, `./assets/${get(emojiKey).key}.png`), (err, data) => {
       if (err) throw new Error(err);
       resolve(data);
     });
@@ -40,7 +40,7 @@ function imageize(emojiKey = "") {
 }
 
 module.exports = {
-  imageize,
+  imagize,
   random,
   get,
 };
