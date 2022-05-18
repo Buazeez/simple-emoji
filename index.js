@@ -1,46 +1,28 @@
 const emojis = require("./emojis.json");
-const fs = require("fs");
-const { join } = require("path");
 
 function random() {
-  const keys = Object.keys(emojis);
-  const key = keys[Math.floor(Math.random() * keys.length)];
+  let emoji = emojis[Math.floor(Math.random() * emojis.length)];
 
   return {
-    emoji: emojis[key],
-    key,
+    emoji: emoji.emoji,
+    key: emoji.key,
+    buffer: Buffer.from(emoji.buffer.value),
   };
 }
 
 function get(emoji = "") {
   if (!emoji) throw new Error("emoji key is required");
 
-  const key =
-    Object.keys(emojis)[Object.values(emojis).findIndex((e) => e === emoji)] ||
-    Object.keys(emojis).find((e) => e === emoji);
-  const _emoji = emojis[emoji] || emojis[key];
-
-  if (!emoji || !key) throw new Error("emoji not found");
+  let result = emojis.find((x) => x.key === emoji || x.emoji === emoji);
 
   return {
-    emoji: _emoji,
-    key,
+    emoji: result.emoji,
+    key: result.key,
+    buffer: Buffer.from(result.buffer.value),
   };
 }
 
-function imagize(emojiKey = "") {
-  return new Promise((resolve) => {
-    if (!emojiKey) throw new Error("emoji key is required");
-
-    fs.readFile(join(__dirname, `./assets/${get(emojiKey).key}.png`), (err, data) => {
-      if (err) throw new Error(err);
-      resolve(data);
-    });
-  });
-}
-
 module.exports = {
-  imagize,
   random,
   get,
 };

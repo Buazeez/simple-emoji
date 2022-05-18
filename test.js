@@ -1,5 +1,7 @@
-const { imagize } = require(".");
+const { get, random } = require(".");
 
 (async () => {
-  console.log(await imagize("☁️"));
+  let emoji = random();
+
+  console.log(get(emoji.key).key === emoji.key);
 })();
