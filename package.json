@@ -1,6 +1,6 @@
 {
   "name": "simple-emoji",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "simple node emoji package with 2 simple functions",
   "main": "index.js",
   "scripts": {
